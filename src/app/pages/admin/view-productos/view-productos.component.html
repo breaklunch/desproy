@@ -1,0 +1,30 @@
+<div class="container text-center mt20">
+  <button routerLink="/admin/add-curso" mat-raised-button color="primary">Agregar Producto</button>
+</div>
+<mat-card class="mt10" *ngFor = "let e of productos">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>
+        {{ e.titulo }}
+      </mat-card-title>
+      <mat-card-subtitle><div mat-line><b>Nombre:</b>  {{ e.nombre }}</div></mat-card-subtitle>
+      <mat-card-subtitle><div mat-line><b>Categoria:</b> {{ e.categoria.titulo }}</div></mat-card-subtitle>
+      <mat-card-subtitle><div mat-line><b>Marca:</b> {{ e.marca }}</div></mat-card-subtitle>
+      <mat-card-subtitle><div mat-line><b>Fecha de recepcion:</b> {{ e.fecha }}</div></mat-card-subtitle>
+      <mat-card-subtitle><div mat-line><b>Precio:</b> {{ e.precio }}</div></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" [routerLink] = "'/admin/ver-temas/'+e.cursoId+'/'+e.titulo">Variantes</button>
+      <button [routerLink] = "'/admin/curso/'+e.cursoId" mat-flat-button color="primary" class="ml20">Actualizar</button>
+      <button mat-flat-button color="warn" class="ml10" (click) = "eliminarProducto(e.productoId)">Eliminar</button>
+    </mat-card-actions>
+  </mat-card-content>
+  <mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" [routerLink] = "'/admin/ver-materiales/'+e.cursoId+'/'+e.titulo" class="ml20">Vendedores</button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>
+
+

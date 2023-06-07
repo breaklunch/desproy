@@ -1,0 +1,66 @@
+<mat-card>
+  <h1>Agregar nuevo Producto</h1>
+  <button mat-raised-button color="warn" mat-button (click)="openDialog()">Instrucciones</button>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <form (ngSubmit) = "guardarProducto()">
+        <mat-form-field class="w100" appearance="fill">
+          <mat-label>Nombre del producto</mat-label>
+          <input
+          [(ngModel)] = "productoData.nombre"
+          type="text"
+          name="nombre"
+          required
+          placeholder="Digite el Nombre"
+          matInput>
+        </mat-form-field>
+
+        <mat-form-field class="w100" appearance="fill">
+          <mat-label>Marca</mat-label>
+          <input
+          [(ngModel)] = "productoData.marca"
+          type="text"
+          name="marca"
+          placeholder="Digite la marca"
+          matInput
+          >
+        </mat-form-field>
+        <mat-form-field class="w100" appearance="fill">
+          <mat-label>Fecha de recepcion</mat-label>
+          <input
+          [(ngModel)] = "productoData.fecha"
+          type="text"
+          name="fecha"
+          placeholder="Fecha de recepcion"
+          matInput
+          >
+        </mat-form-field>
+        <mat-form-field class="w100" appearance="fill">
+          <mat-label>Precio</mat-label>
+          <input
+          [(ngModel)] = "productoData.costo"
+          type="text"
+          name="costo"
+          placeholder="Digite el costo"
+          matInput
+          >
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill" class="mt20 w100">
+          <mat-label>Categorías</mat-label>
+          <mat-select name="categoria" [(ngModel)] = "productoData.categoria.categoriaId">
+            <mat-option *ngFor = "let c of categorias" [value] = "c.categoriaId">
+              {{ c.titulo }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="container text-center">
+          <button mat-raised-button color="primary">Guardar</button>
+        </div>
+        <button mat-raised-button color="primary" onclick="window.history.back();">Volver atrás</button>
+      </form>
+    </div>
+  </div>
+</mat-card>
